@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HK Shop - Giới Thiệu, Điều Khoản, Bảo Mật & Hướng Dẫn</title>
+    <!-- Favicon (tạo từ logo_in_app_login_shop.png) -->
+    <link rel="icon" href="favicon/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/favicon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <meta name="theme-color" content="#0052cc">
+    <style>
+        :root {
+            --primary-color: #0052cc;
+            --primary-hover: #003b99;
+            --text-color: #2d3748;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --accent-bg: #ebf8ff;
+            /* Cỡ chữ của 5 tab. Mọi chữ trong nội dung tab dùng đúng cỡ này (không lớn hơn). */
+            --tab-fs: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px 10px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 20px 40px 40px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* 1. Header Main Logo & Subtitle */
+        .app-header {
+            text-align: center;
+            padding-top: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            will-change: transform, opacity;
+        }
+
+        .app-logo {
+            width: 144px;
+            height: auto;
+            max-height: 144px;
+            object-fit: contain;
+            margin-bottom: 14px;
+            filter: drop-shadow(0 4px 6px rgba(0, 82, 204, 0.08));
+        }
+
+        .app-subtitle-container {
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .app-subtitle {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin: 0;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(235, 248, 255, 0.9), rgba(225, 239, 254, 0.6));
+            border: 1px solid rgba(0, 82, 204, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 82, 204, 0.05);
+            background-image: linear-gradient(120deg, #003b99 0%, #0052cc 40%, #0080ff 70%, #003b99 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 4s infinite linear;
+            word-wrap: break-word;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* 2. STICKY HEADER WRAPPER */
+        .sticky-header-wrapper {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0);
+            margin: 0 -40px 30px -40px;
+            padding: 10px 40px;
+            border-bottom: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            will-change: background-color, box-shadow, border-color;
+        }
+
+        /* Logo Mini góc trái - Mặc định ẩn width = 0 để 3 tabs áp sát lề trái tuyệt đối */
+        .mini-logo-container {
+            display: flex;
+            align-items: center;
+            width: 0px;
+            height: 36px;
+            flex-shrink: 0;
+            overflow: hidden;
+            will-change: width;
+        }
+
+        .mini-logo {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateY(-10px) scale(0.7);
+            will-change: transform, opacity;
+        }
+
+        /* Khung chứa Nav Tabs */
+        .tabs-dock-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: flex-start;
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            will-change: transform, background-color, border-color;
+            transform-origin: left center;
+            flex-shrink: 0;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: var(--tab-fs);
+            font-weight: 600;
+            color: #4a5568;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 82, 204, 0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background-color: var(--accent-bg);
+            color: var(--primary-color);
+        }
+
+        /* Switch Language ở góc phải */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 120px;
+            justify-content: flex-end;
+            flex-shrink: 0;
+        }
+
+        .lang-btn {
+            background-color: #edf2f7;
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #4a5568;
+            white-space: nowrap;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .tab-content { display: none; font-size: var(--tab-fs); }
+        .tab-content.active { display: block; }
+
+        h2 {
+            font-size: var(--tab-fs);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #1a202c;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        p, li { font-size: var(--tab-fs); color: #4a5568; }
+        ul { padding-left: 24px; }
+        li { margin-bottom: 8px; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .feature-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: var(--tab-fs);
+        }
+
+        .last-updated {
+            font-style: italic;
+            color: #718096;
+            font-size: var(--tab-fs);
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            font-size: var(--tab-fs);
+            background-color: var(--accent-bg);
+            border: 1px solid #bee3f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .lang-block { display: none; }
+        .lang-block.active-lang { display: block; }
+
+        /* Hướng dẫn sử dụng */
+        .guide-intro {
+            background: var(--accent-bg);
+            border: 1px solid #bee3f8;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 16px 0 24px 0;
+        }
+        .guide-intro p { margin: 0; }
+
+        .guide-steps {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 24px 0;
+            counter-reset: step;
+        }
+        .guide-steps li {
+            position: relative;
+            padding: 12px 16px 12px 52px;
+            margin-bottom: 10px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            counter-increment: step;
+        }
+        .guide-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 14px;
+            top: 12px;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: calc(var(--tab-fs) - 1px);
+            font-weight: 700;
+        }
+        .guide-steps li strong { color: #1a202c; }
+
+        .guide-tip {
+            border-left: 4px solid #f6ad55;
+            background: #fffaf0;
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0 20px 0;
+            font-size: var(--tab-fs);
+        }
+        .guide-tip p { margin: 0; }
+
+        .guide-faq { font-size: var(--tab-fs); }
+        .guide-faq summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #2d3748;
+            padding: 10px 0;
+        }
+        .guide-faq p { margin: 4px 0 10px 0; }
+
+        /* RESPONSIVE MOBILE & TABLET */
+        @media (max-width: 768px) {
+            :root { --tab-fs: 11px; }
+            body { padding: 0; }
+            .container {
+                padding: 15px 12px 30px 12px;
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+            }
+
+            .app-logo { 
+                width: 100px; 
+                margin-bottom: 10px;
+            }
+            .app-subtitle {
+                font-size: 12px;
+                padding: 6px 12px;
+                border-radius: 20px;
+            }
+
+            .sticky-header-wrapper {
+                margin: 0 -12px 20px -12px;
+                padding: 8px 12px;
+            }
+
+            .lang-switcher {
+                width: auto;
+                gap: 3px;
+                margin-left: 6px;
+            }
+            .lang-btn {
+                padding: 3px 6px;
+                font-size: 10px;
+            }
+
+            /* Khung dock có thể cuộn ngang nếu 5 tab vẫn không đủ chỗ */
+            .tabs-dock-container {
+                min-width: 0;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 6px 0;
+                margin: -6px 0;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .tabs-dock-container::-webkit-scrollbar { display: none; }
+
+            .nav-tabs {
+                gap: 2px;
+                padding: 2px;
+                border-radius: 6px;
+            }
+            .tab-btn {
+                padding: 5px 7px;
+                border-radius: 4px;
+            }
+            .guide-steps li { padding: 10px 12px 10px 46px; }
+            .guide-steps li::before { left: 10px; top: 10px; }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .feature-card { padding: 15px; }
+        }
+
+        @media (max-width: 480px) {
+            /* Nút ngôn ngữ chỉ còn cờ; tab gọn hơn để 5 tab + logo mini vừa một hàng */
+            .lang-txt { display: none; }
+            .lang-btn { padding: 2px 6px; font-size: 12px; }
+            .tab-btn { padding: 5px 6px; }
+        }
+
+        @media (max-width: 400px) {
+            :root { --tab-fs: 10px; }
+            .tab-btn {
+                padding: 4px 4px;
+            }
+            .nav-tabs { gap: 0; padding: 1px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header Main Logo & Subtitle -->
+    <div class="app-header" id="mainHeader">
+        <img src="logo_in_app_login_shop.png" alt="HK Shop Logo" class="app-logo">
+        <div class="app-subtitle-container">
+            <p class="app-subtitle lang-block lang-vi active-lang">Nền tảng Quản lý Vận chuyển & Giải pháp Tài chính COD dành cho Chủ Shop</p>
+            <p class="app-subtitle lang-block lang-en">Shipping Management & COD Financial Solutions Platform for Merchants</p>
+        </div>
+    </div>
+
+    <!-- Sticky Header Wrapper -->
+    <div class="sticky-header-wrapper" id="stickyHeader">
+        
+        <!-- 1. Mini Logo (Kích thước width tăng từ 0 -> Max khi scroll) -->
+        <div class="mini-logo-container" id="miniLogoContainer">
+            <img src="logo_in_app_login_shop.png" alt="HK Shop Mini Logo" class="mini-logo" id="miniLogo">
+        </div>
+
+        <!-- 2. Khung chứa 4 Tabs: Ban đầu DOCK THẲNG LỀ TRÁI -> Trượt về GIỮA khi scroll -->
+        <div class="tabs-dock-container" id="tabsDockContainer">
+            <div class="nav-tabs" id="navTabs">
+                <a href="#about" class="tab-btn" id="btn-about" onclick="switchTab('about')">
+                    <span class="lang-block lang-vi active-lang">Giới Thiệu</span>
+                    <span class="lang-block lang-en">About</span>
+                </a>
+                <a href="#terms" class="tab-btn" id="btn-terms" onclick="switchTab('terms')">
+                    <span class="lang-block lang-vi active-lang">Điều Khoản</span>
+                    <span class="lang-block lang-en">Terms</span>
+                </a>
+                <a href="#privacy" class="tab-btn" id="btn-privacy" onclick="switchTab('privacy')">
+                    <span class="lang-block lang-vi active-lang">Bảo Mật</span>
+                    <span class="lang-block lang-en">Privacy</span>
+                </a>
+                <a href="#guide" class="tab-btn" id="btn-guide" onclick="switchTab('guide')">
+                    <span class="lang-block lang-vi active-lang">Hướng Dẫn</span>
+                    <span class="lang-block lang-en">Guide</span>
+                </a>
+                <a href="#support" class="tab-btn" id="btn-support" onclick="switchTab('support')">
+                    <span class="lang-block lang-vi active-lang">Hỗ Trợ</span>
+                    <span class="lang-block lang-en">Support</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. Nút Chọn Ngôn Ngữ Góc Phải -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-vi" onclick="switchLanguage('vi')">🇻🇳<span class="lang-txt"> VN</span></button>
+            <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧<span class="lang-txt"> EN</span></button>
+        </div>
+
+    </div>
+
+    <!-- TAB 1: GIỚI THIỆU ỨNG DỤNG -->
+    <div id="about" class="tab-content">
+        <div class="lang-block lang-vi active-lang">
+            <h2>Về Chúng Tôi</h2>
+            <p><strong>HK Shop</strong> là giải pháp công nghệ trung gian do <strong>HKPD</strong> phát triển, hỗ trợ tối ưu hóa quy trình giao vận và dòng tiền cho các nhà bán hàng thương mại điện tử (Chủ shop). Chúng tôi kết nối trực tiếp với các đơn vị vận chuyển hàng đầu tại Việt Nam nhằm mang lại trải nghiệm giao nhận mượt mà, tiết kiệm chi phí nhất.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🚚 Đa Dạng Hãng Vận Chuyển</h3>
+                    <p>Tích hợp sẵn các đơn vị vận chuyển lớn như ViettelPost, J&T Express, GiaoHangNhanh (GHN), GiaoHangTietKiem (GHTK)... Cho phép so sánh giá cước và thời gian giao hàng tức thì.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💰 Chiết Khấu Sản Lượng Cực Tốt</h3>
+                    <p>Nhờ cơ chế gom đơn hàng lớn từ cộng đồng chủ shop, chúng tôi đàm phán cước phí cam kết với hãng vận chuyển để mang đến mức giá ưu đãi nhất cho bạn.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💵 Ứng Trước Tiền COD</h3>
+                    <p>Giải quyết bài toán quay vòng vốn nhanh. Hỗ trợ chủ shop nhận ứng trước tiền COD linh hoạt ngay khi hàng tạo vận đơn thành công mà không phải chờ đối soát tuần/tháng.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Quản Lý Tập Trung</h3>
+                    <p>Theo dõi hành trình đơn hàng, tỷ lệ giao thành công, đối soát doanh thu COD rõ ràng, minh bạch chỉ trên một giao diện duy nhất.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="lang-block lang-en">
+            <h2>About Us</h2>
+            <p><strong>HK Shop</strong> is an intermediary technology solution developed by <strong>HKPD</strong>, designed to optimize logistics workflows and cash flow for e-commerce merchants. We directly integrate with Vietnam's leading courier services to deliver seamless, cost-effective shipping experiences.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🚚 Multiple Carrier Integration</h3>
+                    <p>Integrated with major logistics providers such as ViettelPost, J&T Express, GHN, GHTK... Allowing real-time comparison of shipping rates and delivery times.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💰 Volume-based Discounts</h3>
+                    <p>By aggregating order volumes across our seller community, we negotiate exclusive discounted rates directly with courier partners to lower your shipping costs.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💵 Instant COD Advance</h3>
+                    <p>Solve your capital turnover challenges. Merchants can receive flexible Cash on Delivery (COD) advances immediately upon waybill creation without waiting for standard settlement cycles.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Centralized Management</h3>
+                    <p>Track order statuses, delivery success rates, and transparently reconcile COD payouts from a single dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: ĐIỀU KHOẢN DỊCH VỤ -->
+    <div id="terms" class="tab-content">
+        <div class="lang-block lang-vi active-lang">
+            <div class="last-updated">Cập nhật lần cuối ngày: 23 tháng 09, 2026</div>
+
+            <h2>1. Chấp Nhận Điều Khoản</h2>
+            <p>Khi đăng ký tài khoản và sử dụng dịch vụ trên ứng dụng <strong>HK Shop</strong>, bạn đồng ý tuân thủ toàn bộ các điều khoản và điều kiện được quy định dưới đây bởi công ty <strong>HKPD</strong>. Nếu không đồng ý, vui lòng ngừng sử dụng dịch vụ.</p>
+
+            <h2>2. Dịch Vụ Trung Gian Vận Chuyển</h2>
+            <ul>
+                <li>Chúng tôi hoạt động với vai trò là đơn vị trung gian kết nối thông tin giữa Chủ shop và Hãng vận chuyển (ViettelPost, J&T, GHN, GHTK...).</li>
+                <li>Trách nhiệm thực tế về lấy hàng, vận chuyển, giao hàng, bảo quản tài sản thuộc về Đối tác Vận chuyển được bạn lựa chọn cho đơn hàng đó.</li>
+                <li>Hàng hóa gửi qua ứng dụng phải tuân thủ danh mục hàng hóa được phép lưu thông theo quy định của pháp luật Việt Nam.</li>
+            </ul>
+
+            <h2>3. Quy Định Ứng Tiền COD & Đối Soát Tài Chính</h2>
+            <ul>
+                <li><strong>Điều kiện ứng tiền:</strong> Việc ứng trước tiền COD áp dụng cho các đơn hàng hợp lệ, đã xác minh thông tin người nhận và người gửi theo tiêu chuẩn kiểm soát rủi ro của hệ thống.</li>
+                <li><strong>Nghĩa vụ hoàn trả/đối soát:</strong> Khi đơn hàng hoàn thành giao hoặc bị chuyển hoàn, hệ thống sẽ thực hiện đối soát tự động. Nếu đơn hàng bị hủy hoặc giao thất bại (chuyển hoàn), Chủ shop có trách nhiệm hoàn trả số tiền COD đã được ứng trước cùng các phí cước chuyển hoàn phát sinh (nếu có).</li>
+                <li><strong>Xác thực tài khoản (KYC):</strong> Để sử dụng tính năng ứng tiền COD, Chủ shop phải hoàn thành xác thực danh tính (CCCD/CMND và tài khoản ngân hàng chính chủ).</li>
+            </ul>
+
+            <h2>4. Quyền Và Trách Nhiệm Của Người Dùng</h2>
+            <ul>
+                <li>Cung cấp chính xác, trung thực thông tin hàng hóa, khối lượng, kích thước và địa chỉ người nhận.</li>
+                <li>Không tạo đơn hàng ảo, gian lận cước phí hoặc lợi dụng chính sách ứng tiền COD để chiếm dụng vốn bất hợp pháp.</li>
+                <li>Tự bảo mật thông tin tài khoản, mật khẩu và mã PIN giao dịch.</li>
+            </ul>
+
+            <h2>5. Giới Hạn Trách Nhiệm & Xử Lý Khiếu Nại</h2>
+            <ul>
+                <li>Mọi đền bù mất mát, hư hỏng hàng hóa sẽ được xử lý theo Chính sách bồi thường của Hãng vận chuyển trực tiếp xử lý đơn hàng đó. HK Shop sẽ đóng vai trò hỗ trợ Chủ shop đàm phán và đòi bồi thường.</li>
+                <li>Chúng tôi có quyền tạm khóa hoặc chấm dứt tài khoản ngay lập tức nếu phát hiện bất kỳ dấu hiệu gian lận hay vi phạm quy định pháp luật.</li>
+            </ul>
+        </div>
+
+        <div class="lang-block lang-en">
+            <div class="last-updated">Last updated: September 23, 2026</div>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By registering an account and using services on the <strong>HK Shop</strong> app, you agree to comply with all terms and conditions specified below by <strong>HKPD</strong>. If you do not agree, please discontinue using our services.</p>
+
+            <h2>2. Intermediary Logistics Services</h2>
+            <ul>
+                <li>We operate as an intermediary connecting information between Merchants and Shipping Carriers (ViettelPost, J&T, GHN, GHTK...).</li>
+                <li>The physical responsibility for parcel pickup, transport, delivery, and item safety belongs to the selected Courier Partner for that order.</li>
+                <li>Items shipped via the application must strictly comply with legally allowed goods under Vietnamese law.</li>
+            </ul>
+
+            <h2>3. COD Advances & Financial Settlement Regulations</h2>
+            <ul>
+                <li><strong>Advance Eligibility:</strong> COD advances apply to valid orders that pass system risk control checks and verified recipient/sender details.</li>
+                <li><strong>Reconciliation & Repayment Obligations:</strong> Automated reconciliation occurs upon order delivery or return. If an order is canceled or delivery fails (returned), the Merchant is responsible for reimbursing the advanced COD amount along with any applicable return shipping fees.</li>
+                <li><strong>Account Verification (KYC):</strong> To enable COD advance features, Merchants must complete identity verification (ID card and matching bank account).</li>
+            </ul>
+
+            <h2>4. User Rights & Responsibilities</h2>
+            <ul>
+                <li>Provide truthful and accurate information regarding goods, weight, dimensions, and recipient addresses.</li>
+                <li>Refrain from creating fake orders, committing fee fraud, or abusing COD advance policies for unlawful capital exploitation.</li>
+                <li>Maintain strict security of your account credentials, passwords, and transaction PINs.</li>
+            </ul>
+
+            <h2>5. Limitation of Liability & Dispute Resolution</h2>
+            <ul>
+                <li>Claims for lost or damaged goods will be processed according to the Compensation Policy of the handling Courier Partner. HK Shop will assist the Merchant in negotiations and claim processing.</li>
+                <li>We reserve the right to suspend or terminate accounts immediately upon detecting fraudulent activity or legal violations.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TAB 3: CHÍNH SÁCH BẢO MẬT -->
+    <div id="privacy" class="tab-content">
+        <div class="lang-block lang-vi active-lang">
+            <div class="last-updated">Cập nhật lần cuối ngày: 23 tháng 09, 2026</div>
+
+            <p>Chào mừng bạn sử dụng ứng dụng <strong>HK Shop</strong>. Chúng tôi cam kết bảo vệ sự riêng tư và bảo mật thông tin cá nhân của người dùng. Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng, chia sẻ và bảo vệ thông tin cá nhân của bạn.</p>
+
+            <h2>1. Thông Tin Chúng Tôi Thu Thập</h2>
+            <ul>
+                <li><strong>Thông tin tài khoản Shop:</strong> Họ và tên, số điện thoại, địa chỉ email, địa chỉ lấy hàng, tên cửa hàng/doanh nghiệp.</li>
+                <li><strong>Thông tin tài chính & Xác minh danh tính (KYC):</strong> Số tài khoản ngân hàng, tên chủ tài khoản, ảnh chụp CCCD/CMND (phục vụ đối soát và ứng tiền COD).</li>
+                <li><strong>Thông tin đơn hàng & Đơn vị vận chuyển:</strong> Tên, số điện thoại, địa chỉ người nhận, giá trị tiền thu hộ (COD), thông tin chi tiết gói hàng.</li>
+                <li><strong>Thông tin thiết bị & Kỹ thuật:</strong> Địa chỉ IP, loại thiết bị, hệ điều hành, định danh thiết bị (Device ID).</li>
+            </ul>
+
+            <h2>2. Mục Đích Sử Dụng Thông Tin</h2>
+            <ul>
+                <li>Tạo vận đơn và kết nối dữ liệu sang các đối tác vận chuyển (ViettelPost, J&T, GHN, GHTK...).</li>
+                <li>Thực hiện các lệnh chuyển khoản ứng tiền COD, chiết khấu và đối soát doanh thu.</li>
+                <li>Tổng hợp sản lượng đơn hàng để áp dụng các chính sách ưu đãi cước phí.</li>
+                <li>Hỗ trợ giải quyết sự cố, khiếu nại đơn hàng và phòng chống gian lận tài chính.</li>
+            </ul>
+
+            <h2>3. Chia Sẻ Thông Tin Với Bên Thứ Ba</h2>
+            <ul>
+                <li><strong>Đối tác Vận chuyển:</strong> Cung cấp thông tin gói hàng và địa chỉ cho đơn vị giao hàng trực tiếp.</li>
+                <li><strong>Cổng thanh toán / Ngân hàng:</strong> Cung cấp thông tin tài khoản để thực hiện giao dịch nạp/rút/ứng tiền.</li>
+                <li><strong>Cơ quan chức năng:</strong> Tiết lộ khi có yêu cầu hợp pháp từ cơ quan quản lý nhà nước.</li>
+            </ul>
+
+            <h2>4. Quy Trình Yêu Cầu Xóa Dữ Liệu (Account / Data Deletion)</h2>
+            <p>Người dùng có quyền yêu cầu xóa tài khoản và dữ liệu cá nhân theo quy định của Google Play & App Store:</p>
+
+            <ul>
+                <li><strong>Thực hiện trên App:</strong> Vào mục <em>Tài khoản</em> > Chọn <strong>"Xóa tài khoản"</strong>.</li>
+                <li><strong>Gửi yêu cầu qua Email:</strong> Gửi email về địa chỉ <strong>cuccu150592@gmail.com</strong>. Chúng tôi sẽ xử lý trong vòng 03 ngày làm việc sau khi xác nhận tài khoản không còn nghĩa vụ nợ cước hoặc COD.</li>
+            </ul>
+        </div>
+
+        <div class="lang-block lang-en">
+            <div class="last-updated">Last updated: September 23, 2026</div>
+
+            <p>Welcome to <strong>HK Shop</strong>. We are committed to protecting your privacy and personal data. This Privacy Policy outlines how we collect, use, share, and safeguard your personal information.</p>
+
+            <h2>1. Information We Collect</h2>
+            <ul>
+                <li><strong>Merchant Account Details:</strong> Full name, phone number, email address, pickup address, shop/business name.</li>
+                <li><strong>Financial & KYC Data:</strong> Bank account details, account holder name, ID card photos (for reconciliation and COD advance services).</li>
+                <li><strong>Order & Shipping Data:</strong> Recipient name, phone number, delivery address, COD value, parcel details.</li>
+                <li><strong>Technical & Device Data:</strong> IP address, device type, operating system, Device ID.</li>
+            </ul>
+
+            <h2>2. How We Use Information</h2>
+            <ul>
+                <li>Generating waybills and syncing data with carrier partners (ViettelPost, J&T, GHN, GHTK...).</li>
+                <li>Executing COD advances, discount payouts, and revenue reconciliations.</li>
+                <li>Aggregating shipping volumes to provide discounted carrier rates.</li>
+                <li>Providing customer support, resolving order disputes, and preventing financial fraud.</li>
+            </ul>
+
+            <h2>3. Third-Party Data Sharing</h2>
+            <ul>
+                <li><strong>Shipping Carriers:</strong> Sharing parcel details and recipient address with active delivery partners.</li>
+                <li><strong>Banks & Payment Gateways:</strong> Sharing financial account details to execute payout transactions.</li>
+                <li><strong>Regulatory Authorities:</strong> Disclosing details when legally required by governmental authorities.</li>
+            </ul>
+
+            <h2>4. Account & Data Deletion Request Process</h2>
+            <p>Users reserve the right to request deletion of their account and personal data in compliance with Google Play & App Store guidelines:</p>
+
+            <ul>
+                <li><strong>In-App Deletion:</strong> Go to <em>Account</em> > <em>Security Settings</em> > Select <strong>"Delete Account"</strong>.</li>
+                <li><strong>Email Request:</strong> Send an email to <strong>cuccu150592@gmail.com</strong>. We will process your request within 03 business days after confirming no outstanding fees or COD liabilities exist.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TAB 4: HƯỚNG DẪN SỬ DỤNG -->
+    <div id="guide" class="tab-content">
+        <div class="lang-block lang-vi active-lang">
+            <h2>Hướng Dẫn Sử Dụng HK Shop</h2>
+            <div class="guide-intro">
+                <p>HK Shop dành cho <strong>Chủ shop</strong> và <strong>Nhân viên shop</strong>. Sau khi đăng nhập, app có 3 tab ở thanh đáy: <strong>Vận đơn</strong>, <strong>Sửa đơn</strong> và <strong>Tài khoản</strong>. Hướng dẫn dưới đây đi theo đúng thứ tự bạn sẽ dùng lần đầu.</p>
+            </div>
+
+            <h2>1. Đăng nhập lần đầu</h2>
+            <ol class="guide-steps">
+                <li><strong>Chọn vai trò</strong> Chủ shop hoặc Nhân viên, nhập email và mật khẩu do HKPD cấp. Mục "Ghi nhớ đăng nhập" được bật sẵn để lần sau không phải nhập lại.</li>
+                <li><strong>Nhập mã xác thực thiết bị (passcode)</strong> nếu app yêu cầu. Mã này do CEO HKPD cấp cho từng thiết bị. Bấm "Xin passcode từ CEO" và chờ thông báo "Mã xác thực thiết bị đã được cấp".</li>
+                <li><strong>Kết nối tài khoản Viettel Post</strong>: vào tab Vận đơn, bấm <strong>Kết nối</strong> và đăng nhập tài khoản của nhà vận chuyển. Chỉ cần làm một lần trên mỗi thiết bị.</li>
+            </ol>
+            <div class="guide-tip"><p>💡 Nếu app báo "Phiên với Viettel Post đã hết hạn", chỉ cần bấm <strong>Kết nối lại</strong>. Dữ liệu đã lưu trong app không mất.</p></div>
+
+            <h2>2. Tab Vận đơn: theo dõi và lên đơn</h2>
+            <ol class="guide-steps">
+                <li><strong>Xem danh sách vận đơn</strong> của từng nhà vận chuyển ở dải tab phía trên. Dùng hàng chip lọc để lọc theo trạng thái, hoặc biểu tượng 🔍 để tìm theo mã đơn, tên hay số điện thoại người nhận.</li>
+                <li><strong>Lên đơn mới</strong>: bấm nút "Lên đơn mới", chọn kho gửi (nếu shop có nhiều kho), gõ tên hoặc số điện thoại để chọn người nhận từ danh bạ, rồi nhập món hàng, khối lượng và tiền COD.</li>
+                <li><strong>Lưu nháp hoặc Tạo đơn</strong>: "Lưu nháp" giữ đơn lại để chỉnh tiếp; "Tạo đơn hàng" gửi đơn sang Viettel Post. Đơn nháp có thể <strong>Duyệt đơn</strong> để đẩy lên hãng hoặc <strong>Huỷ đơn</strong> để xoá.</li>
+                <li><strong>Thao tác trên thẻ đơn</strong>: bấm <strong>⋯</strong> để Gọi người nhận, xem Hành trình, Copy đơn, In đơn, Lưu người nhận vào danh bạ hoặc Chép mã đơn. Bấm vào thẻ để xem chi tiết đơn.</li>
+            </ol>
+            <div class="guide-tip"><p>💡 Danh bạ người nhận được lưu ngay trên máy nên tìm kiếm tức thì, không tốn dữ liệu mạng. Người nhận hay dùng sẽ được gợi ý lên đầu.</p></div>
+
+            <h2>3. Tab Sửa đơn: yêu cầu chỉnh sửa vận đơn</h2>
+            <p>Khi đơn đã lên hãng và cần thay đổi, bạn gửi yêu cầu để bộ phận CS của HKPD thao tác trực tiếp với nhà vận chuyển.</p>
+            <ol class="guide-steps">
+                <li><strong>Tạo yêu cầu</strong>: bấm "Sửa đơn" trên thẻ vận đơn, hoặc vào tab Sửa đơn và bấm nút thêm mới. Chọn nhà vận chuyển, nhập mã vận đơn hoặc bấm ⌗ để <strong>quét mã vạch / QR</strong> trên gói hàng.</li>
+                <li><strong>Chọn loại yêu cầu</strong>: Sửa số tiền COD, Đổi Tỉnh / Huyện / Xã, Giao hàng một phần, hoặc Lưu kho tại bưu cục. Điền thông tin mới và đính kèm ảnh nếu cần.</li>
+                <li><strong>Xác nhận và gửi</strong>. Yêu cầu chuyển sang trạng thái <strong>Chờ xử lý</strong>. Khi còn chờ, bạn có thể bấm "Sửa" hoặc "Huỷ" ngay trên thẻ yêu cầu.</li>
+                <li><strong>Theo dõi kết quả</strong>: app gửi thông báo khi CS bắt đầu xử lý, hoàn tất hoặc từ chối (kèm lý do). Chạm vào thông báo để mở chi tiết yêu cầu.</li>
+            </ol>
+            <div class="guide-tip"><p>💡 Nhân viên chỉ huỷ được yêu cầu do chính mình tạo. Chủ shop huỷ được mọi yêu cầu của shop.</p></div>
+
+            <h2>4. Tab Tài khoản</h2>
+            <ul>
+                <li><strong>Kho hàng</strong>: Chủ shop thêm/sửa địa chỉ kho gửi. Nhân viên chỉ xem các kho được gán.</li>
+                <li><strong>Nhân viên</strong>: Chủ shop tạo tài khoản nhân viên và giới hạn kho được phép lên đơn (khi tính năng được bật cho shop).</li>
+                <li><strong>Danh bạ người nhận</strong>: xem, thêm, sửa người nhận thường xuyên.</li>
+                <li><strong>Tài khoản ngân hàng</strong>: cập nhật số tài khoản để nhận tiền COD và ứng trước.</li>
+                <li><strong>Bảo mật</strong>: Đổi mật khẩu, xem thiết bị đang đăng nhập, Đăng xuất hoặc Xoá tài khoản.</li>
+                <li><strong>Liên hệ CS</strong>: gọi hoặc nhắn Zalo cho bộ phận hỗ trợ của HKPD.</li>
+            </ul>
+
+            <h2>5. Câu hỏi thường gặp</h2>
+            <details class="guide-faq">
+                <summary>Tại sao tôi không thấy nút Huỷ đơn trên vận đơn đã lên hãng?</summary>
+                <p>Cổng của nhà vận chuyển không cho huỷ đơn đã tiếp nhận. Hãy dùng "Sửa đơn" để gửi yêu cầu cho CS xử lý.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Danh sách vận đơn không cập nhật?</summary>
+                <p>Kéo xuống để làm mới. Nếu vẫn không được, vào tab Tài khoản kiểm tra mục "Đồng bộ lần cuối" hoặc bấm "Kết nối lại" ở tab Vận đơn.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Tôi đổi điện thoại, cần làm gì?</summary>
+                <p>Đăng nhập lại trên máy mới, xin passcode thiết bị từ CEO rồi Kết nối lại Viettel Post. Danh bạ và kho hàng sẽ tự đồng bộ về máy.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Quên mật khẩu?</summary>
+                <p>Chủ shop liên hệ CS HKPD để được cấp lại. Nhân viên báo Chủ shop để đặt lại mật khẩu trong mục Nhân viên.</p>
+            </details>
+        </div>
+
+        <div class="lang-block lang-en">
+            <h2>HK Shop User Guide</h2>
+            <div class="guide-intro">
+                <p>HK Shop is for <strong>Shop Owners</strong> and <strong>Shop Staff</strong>. After signing in, the app has 3 bottom tabs: <strong>Orders</strong>, <strong>Edit Requests</strong> and <strong>Account</strong>. The steps below follow the order you will use them the first time.</p>
+            </div>
+
+            <h2>1. First Sign-in</h2>
+            <ol class="guide-steps">
+                <li><strong>Pick your role</strong> (Shop Owner or Staff), then enter the email and password issued by HKPD. "Remember me" is on by default.</li>
+                <li><strong>Enter the device passcode</strong> if prompted. It is issued per device by the HKPD CEO. Tap "Request passcode from CEO" and wait for the "Device passcode issued" notification.</li>
+                <li><strong>Connect your Viettel Post account</strong>: open the Orders tab, tap <strong>Connect</strong> and sign in to the carrier. This is needed only once per device.</li>
+            </ol>
+            <div class="guide-tip"><p>💡 If the app says the Viettel Post session has expired, just tap <strong>Reconnect</strong>. Nothing saved in the app is lost.</p></div>
+
+            <h2>2. Orders Tab: Track and Create Orders</h2>
+            <ol class="guide-steps">
+                <li><strong>Browse waybills</strong> per carrier using the strip at the top. Use the filter chips for status, or 🔍 to search by tracking number, receiver name or phone.</li>
+                <li><strong>Create a new order</strong>: tap "New order", choose the sending warehouse (if you have several), type a name or phone to pick a receiver from your contacts, then enter the items, weight and COD amount.</li>
+                <li><strong>Save draft or Create</strong>: "Save draft" keeps the order for later editing; "Create order" submits it to Viettel Post. A draft can be <strong>Approved</strong> to send it to the carrier or <strong>Cancelled</strong> to delete it.</li>
+                <li><strong>Card actions</strong>: tap <strong>⋯</strong> to call the receiver, view the journey, copy the order, print the label, save the receiver to contacts or copy the tracking number. Tap the card for full details.</li>
+            </ol>
+            <div class="guide-tip"><p>💡 Receiver contacts are stored on the device, so search is instant and uses no mobile data. Frequently used receivers are suggested first.</p></div>
+
+            <h2>3. Edit Requests Tab: Change a Submitted Waybill</h2>
+            <p>Once an order is with the carrier and needs a change, you send a request and HKPD's CS team performs it directly with the carrier.</p>
+            <ol class="guide-steps">
+                <li><strong>Create a request</strong>: tap "Edit order" on a waybill card, or open the Edit Requests tab and tap add. Choose the carrier, type the tracking number or tap ⌗ to <strong>scan the barcode / QR</strong> on the parcel.</li>
+                <li><strong>Choose the request type</strong>: Change COD amount, Change Province / District / Ward, Partial delivery, or Hold at post office. Fill in the new details and attach photos if needed.</li>
+                <li><strong>Confirm and send</strong>. The request becomes <strong>Pending</strong>. While pending, you can tap "Edit" or "Cancel" right on the request card.</li>
+                <li><strong>Track the result</strong>: the app notifies you when CS starts processing, completes, or rejects the request (with a reason). Tap the notification to open the request details.</li>
+            </ol>
+            <div class="guide-tip"><p>💡 Staff can only cancel requests they created. Shop Owners can cancel any request of the shop.</p></div>
+
+            <h2>4. Account Tab</h2>
+            <ul>
+                <li><strong>Warehouses</strong>: Shop Owners add or edit pickup addresses. Staff can only view the warehouses assigned to them.</li>
+                <li><strong>Staff</strong>: Shop Owners create staff accounts and limit which warehouses they may ship from (when enabled for the shop).</li>
+                <li><strong>Receiver contacts</strong>: view, add and edit frequent receivers.</li>
+                <li><strong>Bank account</strong>: update the account that receives COD payouts and advances.</li>
+                <li><strong>Security</strong>: change password, see signed-in devices, Sign out or Delete account.</li>
+                <li><strong>Contact CS</strong>: call or message HKPD support on Zalo.</li>
+            </ul>
+
+            <h2>5. FAQ</h2>
+            <details class="guide-faq">
+                <summary>Why is there no Cancel button on a submitted waybill?</summary>
+                <p>The carrier portal does not allow cancelling an accepted order. Use "Edit order" to send a request to CS instead.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>The waybill list is not updating?</summary>
+                <p>Pull down to refresh. If that does not help, check "Last synced" in the Account tab or tap "Reconnect" in the Orders tab.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>I switched phones. What should I do?</summary>
+                <p>Sign in on the new device, request a device passcode from the CEO, then reconnect Viettel Post. Contacts and warehouses sync automatically.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Forgot your password?</summary>
+                <p>Shop Owners contact HKPD CS for a reset. Staff ask their Shop Owner to reset it from the Staff section.</p>
+            </details>
+        </div>
+    </div>
+
+    <!-- TAB 5: HỖ TRỢ (Support URL khai trên App Store / Google Play: .../#support) -->
+    <div id="support" class="tab-content">
+        <div class="lang-block lang-vi active-lang">
+            <h2>Trung Tâm Hỗ Trợ HKPD</h2>
+            <div class="guide-intro">
+                <p>Hỗ trợ cho hai ứng dụng do <strong>HKPD</strong> phát triển và vận hành: <strong>HK Shop</strong> và <strong>HK Admin</strong>. Gửi email tới <strong><a href="mailto:cuccu150592@gmail.com?subject=H%E1%BB%97%20tr%E1%BB%A3%20HKPD">cuccu150592@gmail.com</a></strong>, bộ phận CS sẽ liên hệ lại với bạn.</p>
+            </div>
+            <div class="guide-tip"><p>💡 Để được xử lý nhanh, hãy ghi rõ <strong>tên app</strong> (HK Shop / HK Admin), <strong>email đăng nhập</strong>, <strong>mã vận đơn</strong> (nếu có) và mô tả sự cố, kèm ảnh chụp màn hình nếu được.</p></div>
+
+            <h2>Ứng Dụng Của Chúng Tôi</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>HK Shop</h3>
+                    <p>Dành cho Chủ shop và Nhân viên shop: lên đơn, theo dõi vận đơn, nhận ứng tiền COD và gửi yêu cầu sửa đơn. Xem tab <a href="#guide">Hướng Dẫn</a>.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>HK Admin</h3>
+                    <p>Dành cho nhân sự nội bộ HKPD (CEO, Trợ lý, CS): đối soát, duyệt và chi trả tiền ứng COD, xử lý yêu cầu sửa đơn của shop.</p>
+                </div>
+            </div>
+
+            <h2>Câu Hỏi Thường Gặp</h2>
+            <details class="guide-faq">
+                <summary>Làm sao để có tài khoản?</summary>
+                <p>Tài khoản HK Shop và HK Admin đều do HKPD cấp, app không có đăng ký công khai. Chủ shop liên hệ HKPD qua email hỗ trợ để được mở tài khoản.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>App yêu cầu mã xác thực thiết bị (passcode), tôi lấy ở đâu?</summary>
+                <p>Mỗi thiết bị mới cần một mã xác thực do CEO HKPD cấp. Trên màn đăng nhập, bấm "Xin passcode từ CEO" rồi chờ thông báo mã đã được cấp. Nếu chờ lâu, hãy gửi email hỗ trợ kèm email đăng nhập.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Tài khoản của tôi bị khoá?</summary>
+                <p>Nhập sai mật khẩu nhiều lần sẽ bị tạm khoá đăng nhập trong ít phút; chờ rồi thử lại. Nếu app báo "Tài khoản đã bị khoá", hãy liên hệ HKPD qua email hỗ trợ.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Quên mật khẩu?</summary>
+                <p>Chủ shop và nhân sự HK Admin gửi email hỗ trợ để được đặt lại. Nhân viên shop báo Chủ shop đặt lại trong mục Nhân viên của HK Shop.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Khi nào tôi nhận được tiền ứng COD?</summary>
+                <p>Đơn đủ điều kiện được đối soát theo ngày. Sau khi đợt ứng được duyệt, HKPD chuyển khoản vào tài khoản ngân hàng shop đã khai trong tab Tài khoản, kèm báo cáo đối soát từng đơn để shop đối chiếu.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Làm sao để xoá tài khoản?</summary>
+                <p>Vào tab Tài khoản trong app và chọn Xoá tài khoản, hoặc gửi yêu cầu tới email hỗ trợ. Chúng tôi xử lý trong vòng 03 ngày làm việc sau khi xác nhận tài khoản không còn nghĩa vụ nợ cước hoặc COD (xem tab <a href="#privacy">Bảo Mật</a>).</p>
+            </details>
+        </div>
+
+        <div class="lang-block lang-en">
+            <h2>HKPD Support Center</h2>
+            <div class="guide-intro">
+                <p>Support for the two apps developed and operated by <strong>HKPD</strong>: <strong>HK Shop</strong> and <strong>HK Admin</strong>. Email <strong><a href="mailto:cuccu150592@gmail.com?subject=HKPD%20Support">cuccu150592@gmail.com</a></strong> and our CS team will get back to you.</p>
+            </div>
+            <div class="guide-tip"><p>💡 To help us resolve it quickly, include the <strong>app name</strong> (HK Shop / HK Admin), your <strong>login email</strong>, the <strong>tracking number</strong> (if any) and a description of the problem, with screenshots if possible.</p></div>
+
+            <h2>Our Apps</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>HK Shop</h3>
+                    <p>For Shop Owners and Staff: create orders, track waybills, receive COD advances and send edit requests. See the <a href="#guide">Guide</a> tab.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>HK Admin</h3>
+                    <p>For HKPD internal staff (CEO, Assistants, CS): reconcile, approve and pay out COD advances, and handle shops' edit requests.</p>
+                </div>
+            </div>
+
+            <h2>FAQ</h2>
+            <details class="guide-faq">
+                <summary>How do I get an account?</summary>
+                <p>HK Shop and HK Admin accounts are issued by HKPD; there is no public sign-up. Shop Owners contact HKPD via the support email to open an account.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>The app asks for a device passcode. Where do I get it?</summary>
+                <p>Each new device needs a passcode issued by the HKPD CEO. On the sign-in screen, tap "Request passcode from CEO" and wait for the notification. If it takes too long, email support with your login email.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>My account is locked?</summary>
+                <p>Too many wrong passwords lock sign-in for a few minutes; wait and try again. If the app says "Account has been locked", contact HKPD via the support email.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>Forgot your password?</summary>
+                <p>Shop Owners and HK Admin staff email support for a reset. Shop Staff ask their Shop Owner to reset it from the Staff section in HK Shop.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>When will I receive my COD advance?</summary>
+                <p>Eligible orders are reconciled daily. Once an advance batch is approved, HKPD transfers the money to the bank account set in the Account tab, with a per-order reconciliation report.</p>
+            </details>
+            <details class="guide-faq">
+                <summary>How do I delete my account?</summary>
+                <p>Open the Account tab in the app and choose Delete account, or send a request to the support email. We process it within 3 business days after confirming there are no outstanding fees or COD liabilities (see the <a href="#privacy">Privacy</a> tab).</p>
+            </details>
+        </div>
+    </div>
+
+    <!-- Thông tin liên hệ -->
+    <div class="contact-box">
+        <div class="lang-block lang-vi active-lang">
+            <strong>THÔNG TIN LIÊN HỆ & HỖ TRỢ</strong><br>
+            • <strong>Ứng dụng:</strong> HK Shop, HK Admin<br>
+            • <strong>Đơn vị vận hành:</strong> Công ty HKPD<br>
+            • <strong>Email hỗ trợ:</strong> cuccu150592@gmail.com
+        </div>
+        <div class="lang-block lang-en">
+            <strong>CONTACT & SUPPORT INFORMATION</strong><br>
+            • <strong>Applications:</strong> HK Shop, HK Admin<br>
+            • <strong>Operating Company:</strong> HKPD Company<br>
+            • <strong>Support Email:</strong> cuccu150592@gmail.com
+        </div>
+    </div>
+</div>
+
+<script>
+    /* Tab Switcher */
+    function switchTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.remove('active'));
+
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        const targetContent = document.getElementById(tabId);
+        if (targetContent) {
+            targetContent.classList.add('active');
+        }
+
+        const targetBtn = document.getElementById('btn-' + tabId);
+        if (targetBtn) {
+            targetBtn.classList.add('active');
+        }
+    }
+
+    /* Language Switcher */
+    function switchLanguage(lang) {
+        const blocks = document.querySelectorAll('.lang-block');
+        blocks.forEach(block => {
+            block.classList.remove('active-lang');
+            if (block.classList.contains('lang-' + lang)) {
+                block.classList.add('active-lang');
+            }
+        });
+
+        document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.documentElement.lang = lang;
+        
+        setTimeout(() => {
+            calculateTabOffset();
+            updateScrollProgress();
+        }, 50);
+    }
+
+    /* --- HIỆU ỨNG TRƯỢT TRAILING HEADER KHI SCROLL --- */
+    const mainHeader = document.getElementById('mainHeader');
+    const stickyHeader = document.getElementById('stickyHeader');
+    const tabsDockContainer = document.getElementById('tabsDockContainer');
+    const navTabs = document.getElementById('navTabs');
+    const miniLogoContainer = document.getElementById('miniLogoContainer');
+    const miniLogo = document.getElementById('miniLogo');
+    const langSwitcher = document.querySelector('.lang-switcher');
+
+    let maxScrollDistance = 120;
+    let targetOffsetX = 0;
+    let targetLogoWidth = 120; // Độ rộng tối đa của logo mini trên Desktop
+
+    function calculateTabOffset() {
+        // Kiểm tra kích thước màn hình
+        const isMobile = window.innerWidth <= 768;
+        targetLogoWidth = window.innerWidth <= 480 ? 34 : (isMobile ? 45 : 120);
+
+        // Căn giữa theo TOÀN BỘ sticky header (không phải theo khung dock),
+        // và trừ đi phần logo mini sẽ chiếm khi dock xong — nếu không tabs bị lệch phải.
+        const headerRect = stickyHeader.getBoundingClientRect();
+        const headerStyle = window.getComputedStyle(stickyHeader);
+        const padLeft = parseFloat(headerStyle.paddingLeft) || 0;
+        const padRight = parseFloat(headerStyle.paddingRight) || 0;
+        const contentLeft = headerRect.left + padLeft;
+        const contentRight = headerRect.right - padRight;
+
+        const navTabsWidth = navTabs.getBoundingClientRect().width;
+        let langWidth = 0;
+        if (langSwitcher) {
+            const langStyle = window.getComputedStyle(langSwitcher);
+            langWidth = langSwitcher.getBoundingClientRect().width + (parseFloat(langStyle.marginLeft) || 0);
+        }
+
+        // Vị trí trái tự nhiên của tabs khi đã dock (logo mini đã mở hết chiều rộng)
+        const dockedNaturalLeft = contentLeft + targetLogoWidth;
+        // Vị trí trái mong muốn để tabs nằm chính giữa header
+        let desiredLeft = headerRect.left + (headerRect.width / 2) - (navTabsWidth / 2);
+
+        // Không đè lên logo mini bên trái hay nút ngôn ngữ bên phải (màn hình hẹp)
+        const minLeft = dockedNaturalLeft;
+        const maxLeft = contentRight - langWidth - navTabsWidth;
+        if (desiredLeft > maxLeft) desiredLeft = maxLeft;
+        if (desiredLeft < minLeft) desiredLeft = minLeft;
+
+        targetOffsetX = desiredLeft - dockedNaturalLeft;
+        if (targetOffsetX < 0) targetOffsetX = 0;
+    }
+
+    function updateScrollProgress() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        
+        let progress = scrollY / maxScrollDistance;
+        if (progress < 0) progress = 0;
+        if (progress > 1) progress = 1;
+
+        // 1. Tăng chiều rộng khung chứa Mini Logo từ 0px -> Max Width khi cuộn
+        const currentLogoWidth = targetLogoWidth * progress;
+        miniLogoContainer.style.width = `${currentLogoWidth}px`;
+
+        // 2. Dịch chuyển các Tabs TỪ LỀ TRÁI VỀ GIỮA
+        const currentTabsX = targetOffsetX * progress;
+        navTabs.style.transform = `translateX(${currentTabsX}px)`;
+
+        // 3. Main Header ẩn dần
+        mainHeader.style.opacity = 1 - (progress * 1.2);
+        mainHeader.style.transform = `translateY(-${progress * 15}px)`;
+
+        // 4. Mini Logo xuất hiện
+        miniLogo.style.opacity = progress;
+        const logoY = -10 + (progress * 10); 
+        const logoScale = 0.7 + (progress * 0.3);
+        miniLogo.style.transform = `translateY(${logoY}px) scale(${logoScale})`;
+
+        // 5. Nền Sticky Header
+        if (progress >= 0.85) {
+            stickyHeader.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            stickyHeader.style.borderBottomColor = 'var(--border-color)';
+            stickyHeader.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            stickyHeader.style.backdropFilter = 'blur(8px)';
+        } else {
+            stickyHeader.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+            stickyHeader.style.borderBottomColor = 'transparent';
+            stickyHeader.style.boxShadow = 'none';
+            stickyHeader.style.backdropFilter = 'none';
+        }
+    }
+
+    // Tối ưu scroll bằng requestAnimationFrame
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateScrollProgress();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    window.addEventListener('resize', function() {
+        calculateTabOffset();
+        updateScrollProgress();
+    });
+
+    function handleHashChange() {
+        const hash = window.location.hash.replace('#', '');
+        if (['about', 'terms', 'privacy', 'guide', 'support'].includes(hash)) {
+            switchTab(hash);
+        } else if (/\/support\/?$/.test(window.location.pathname)) {
+            // Host rewrite /support → index.html thì mở thẳng tab Hỗ Trợ.
+            switchTab('support');
+        } else {
+            switchTab('about');
+        }
+    }
+
+    window.addEventListener('load', function() {
+        calculateTabOffset();
+        updateScrollProgress();
+        handleHashChange();
+    });
+    window.addEventListener('hashchange', handleHashChange);
+</script>
+
+</body>
+</html>
