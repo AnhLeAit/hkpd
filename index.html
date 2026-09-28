@@ -131,6 +131,8 @@
         .mini-logo {
             height: 36px;
             width: auto;
+            max-width: none;
+            flex-shrink: 0;
             object-fit: contain;
             opacity: 0;
             transform: translateY(-10px) scale(0.7);
@@ -336,7 +338,7 @@
             :root { --tab-fs: 11px; }
             body { padding: 0; }
             .container {
-                padding: 15px 12px 30px 12px;
+                padding: 15px 16px 30px 16px;
                 border-radius: 0;
                 border: none;
                 box-shadow: none;
@@ -352,41 +354,55 @@
                 border-radius: 20px;
             }
 
+            /* Điện thoại: header sticky hai hàng — hàng trên logo mini (trái) và
+               nút ngôn ngữ (phải), hàng dưới 5 tab chia đều cả bề ngang. Một
+               hàng thì logo, 5 tab và nút ngôn ngữ chen nhau, chữ tab phải
+               thu còn 10px và dải tab phải cuộn ngang. */
             .sticky-header-wrapper {
-                margin: 0 -12px 20px -12px;
-                padding: 8px 12px;
+                margin: 0 -16px 20px -16px;
+                padding: 8px 16px 10px 16px;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-areas:
+                    "logo lang"
+                    "tabs tabs";
+                row-gap: 8px;
+                align-items: center;
             }
+            .mini-logo-container {
+                grid-area: logo;
+                height: 32px;
+            }
+            .mini-logo { height: 32px; }
 
             .lang-switcher {
+                grid-area: lang;
                 width: auto;
-                gap: 3px;
-                margin-left: 6px;
+                gap: 6px;
             }
             .lang-btn {
-                padding: 3px 6px;
-                font-size: 10px;
+                padding: 4px 10px;
+                font-size: 12px;
             }
 
-            /* Khung dock có thể cuộn ngang nếu 5 tab vẫn không đủ chỗ */
             .tabs-dock-container {
+                grid-area: tabs;
                 min-width: 0;
-                overflow-x: auto;
-                overflow-y: hidden;
-                padding: 6px 0;
-                margin: -6px 0;
-                scrollbar-width: none;
-                -webkit-overflow-scrolling: touch;
             }
-            .tabs-dock-container::-webkit-scrollbar { display: none; }
-
             .nav-tabs {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                width: 100%;
                 gap: 2px;
-                padding: 2px;
-                border-radius: 6px;
+                padding: 3px;
+                border-radius: 8px;
+                transform: none !important;
             }
             .tab-btn {
-                padding: 5px 7px;
-                border-radius: 4px;
+                font-size: 12px;
+                padding: 8px 2px;
+                border-radius: 6px;
+                text-align: center;
             }
             .guide-steps li { padding: 10px 12px 10px 46px; }
             .guide-steps li::before { left: 10px; top: 10px; }
@@ -398,19 +414,10 @@
             .feature-card { padding: 15px; }
         }
 
-        @media (max-width: 480px) {
-            /* Nút ngôn ngữ chỉ còn cờ; tab gọn hơn để 5 tab + logo mini vừa một hàng */
+        @media (max-width: 360px) {
+            /* Máy rất hẹp: 5 tab vẫn một hàng, chữ nhỏ lại một nấc */
+            .tab-btn { font-size: 11px; padding: 7px 1px; }
             .lang-txt { display: none; }
-            .lang-btn { padding: 2px 6px; font-size: 12px; }
-            .tab-btn { padding: 5px 6px; }
-        }
-
-        @media (max-width: 400px) {
-            :root { --tab-fs: 10px; }
-            .tab-btn {
-                padding: 4px 4px;
-            }
-            .nav-tabs { gap: 0; padding: 1px; }
         }
     </style>
 </head>
@@ -960,10 +967,22 @@
     let targetOffsetX = 0;
     let targetLogoWidth = 120; // Độ rộng tối đa của logo mini trên Desktop
 
+    // Khoảng trống giữa logo mini và dải tab khi đã dock (máy tính).
+    const LOGO_GAP = 20;
+
     function calculateTabOffset() {
         // Kiểm tra kích thước màn hình
         const isMobile = window.innerWidth <= 768;
-        targetLogoWidth = window.innerWidth <= 480 ? 34 : (isMobile ? 45 : 120);
+        // Khung logo mở rộng đúng bằng bề ngang thật của logo (+ khoảng trống
+        // trên máy tính) — số cố định cũ nhỏ hơn logo nên logo dính sát tab.
+        const logoWidth = miniLogo.offsetWidth || (isMobile ? 45 : 120);
+        targetLogoWidth = logoWidth + (isMobile ? 0 : LOGO_GAP);
+        if (isMobile) {
+            // Điện thoại: logo và tab ở hai hàng riêng, tab chia đều bề ngang
+            // nên không trượt.
+            targetOffsetX = 0;
+            return;
+        }
 
         // Căn giữa theo TOÀN BỘ sticky header (không phải theo khung dock),
         // và trừ đi phần logo mini sẽ chiếm khi dock xong — nếu không tabs bị lệch phải.
